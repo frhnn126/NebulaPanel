@@ -130,7 +130,7 @@ Loading Nebula Panel...
 
 <nav class="bottom-nav">
 
-<button onclick="toggleMenu()">
+<button onclick="openMusic()">
 
 <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
 <path d="M9 18V5l11-2v13"/>
@@ -160,6 +160,11 @@ Loading Nebula Panel...
 
 <div class="music-menu" id="musicMenu">
 
+<div class="music-header">
+<h3>Music Player</h3>
+<button onclick="closeMusic()">✕</button>
+</div>
+
 <div class="spotify-player">
 
 <img id="cover" src="img/cover1.jpg" class="cover">
@@ -167,6 +172,20 @@ Loading Nebula Panel...
 <div class="song-info">
 <h4 id="songTitle">MANGU</h4>
 <p id="songArtist">1 / 6 Lagu</p>
+</div>
+
+<div class="progress-container">
+  <span id="currentTime">0:00</span>
+
+  <input
+    type="range"
+    id="progressBar"
+    value="0"
+    min="0"
+    max="100"
+  >
+
+  <span id="duration">0:00</span>
 </div>
 
 <div class="music-control">

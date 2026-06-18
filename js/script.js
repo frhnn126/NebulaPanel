@@ -450,3 +450,37 @@ document.getElementById("cover").src =
 songCovers[currentMusic];
 
 }
+
+function openMusic(){
+document.getElementById("musicMenu").classList.add("show");
+}
+
+function closeMusic(){
+document.getElementById("musicMenu").classList.remove("show");
+}
+
+const progressBar = document.getElementById("progressBar");
+const currentTime = document.getElementById("currentTime");
+const duration = document.getElementById("duration");
+
+audio.addEventListener("loadedmetadata", () => {
+progressBar.max = audio.duration;
+duration.textContent = formatTime(audio.duration);
+});
+
+audio.addEventListener("timeupdate", () => {
+progressBar.value = audio.currentTime;
+currentTime.textContent = formatTime(audio.currentTime);
+});
+
+progressBar.addEventListener("input", () => {
+audio.currentTime = progressBar.value;
+});
+
+function formatTime(time){
+const min = Math.floor(time / 60);
+const sec = Math.floor(time % 60);
+
+return `${min}:${sec < 10 ? "0" : ""}${sec}`;
+}
+
